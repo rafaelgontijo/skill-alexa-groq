@@ -9,16 +9,16 @@ from ask_sdk_core.handler_input import HandlerInput
 
 from ask_sdk_model import Response
 
-from openai import OpenAI
+from groq import Groq
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-openai_api_key = "SUBSTITUA-POR-SUA-API-KEY-DA-OPENAI"
+groq_api_key = "SUBSTITUA-POR-SUA-API-KEY-DA-GROQ"
 
-client = OpenAI(api_key=openai_api_key)
+client = Groq(api_key=groq_api_key)
 
-MODEL = "gpt-4o-mini"
+MODEL = "llama-3.1-70b-versatile"
 
 messages = [
     {
@@ -36,9 +36,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = (
-            "Bem vindo ao Chat 'Gepetê Quatro' da 'Open ei ai'! Qual a sua pergunta?"
-        )
+        speak_output = "Bem vindo ao Chat da 'Meta ei ai'! Qual a sua pergunta?"
 
         return (
             handler_input.response_builder.speak(speak_output)
